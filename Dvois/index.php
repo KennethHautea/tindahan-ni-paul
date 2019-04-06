@@ -1,11 +1,8 @@
-<?php
-include("config.php");
-
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>sad</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
@@ -15,11 +12,21 @@ include("config.php");
 
 </head>
 <body>
+
 <div class="container">
 	<div class="col-md-10">
 		<div class="jumbotron">
 			<h3 class="text-center">DVOIS</h3>
-			<form method="POST" action="proccess.php">
+				<?php
+				$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+				if (strpos($fullUrl,"login=Empty") == true) {
+					echo "<div class='alert alert-danger text-center' role='alert'>Empty oi bugo!!</div>";
+					
+				}
+
+				?>
+			<form method="POST" action="validation.php" >
 				
 				<div class="form-group input-group">
 					<label>Username</label>
@@ -33,6 +40,7 @@ include("config.php");
 					<button class="btn btn-success" name="login">Submit</button> 
 				</div>
 			</form>
+
 		</div>
 	</div>
 	

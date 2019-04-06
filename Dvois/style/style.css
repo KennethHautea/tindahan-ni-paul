@@ -6,3 +6,9 @@
 .btn-group{
 	margin-left:70px;
 }
+.error {
+	color:red;
+}
+body{
+	background-color: #868080;
+}
