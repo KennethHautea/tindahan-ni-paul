@@ -42,9 +42,9 @@
   	<div class="col-sm-4"></div>
   	<div class="col-sm-4 group">
 			<div>
-				<button type="button" class="btn btn-success" href="#" data-toggle="modal" data-target="#suppadd" >Add</button>
-				<button type="button" class="btn btn-warning" href="#" >Update</button>
-				<button type="button" class="btn btn-danger" href="#" >Delete</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#suppadd" >Add</button>
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#suppup" >Update</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppdel" >Delete</button>
 			</div>
 		</div>
   </div>
@@ -84,7 +84,59 @@
         </form>
       </div>
     </div>
+  </div>
+</div>
 
+<!-- Modal update-->
+<div id="suppup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Supplier</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="text">ID</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Name</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Contact Number</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Address</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-success">Update</button>
+              <button type="submit" class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal delete-->
+<div id="suppdel" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure you would like to delete this supplier?</p>
+        <div>
+          <button type="submit" class="btn btn-primary">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
