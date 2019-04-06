@@ -26,18 +26,23 @@
   </center><br>
 </div>
 <div class="table" style="overflow-y:auto;">
-  	<table>
-    	<tr>
-      		<th>ID</th>
-      		<th>Name</th>
-      		<th>Contact Number</th>
-      		<th>Location</th>
-    	</tr>
+  	<table class="table">
+      <thead>
+        <tr>
+          <th>Sup ID</th>
+          <th>Name</th>
+          <th>Contact No</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+    	<tbody>
+        
+      </tbody>
   	</table>
 <div class="container-fluid">
 	<div class="row">
   	<div class="col-sm-4 view">
-		  <button type="button" class="btn btn-primary" href="#" >View Delivery</button>
+		  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view" >View Delivery</button>
 		</div>
   	<div class="col-sm-4"></div>
   	<div class="col-sm-4 group">
@@ -50,6 +55,7 @@
   </div>
 </div>
 </div>
+
 <!-- Modal add-->
 <div id="suppadd" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -62,7 +68,7 @@
       <div class="modal-body">
         <form>
             <div class="form-group">
-              <label for="text">ID</label>
+              <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
@@ -99,7 +105,7 @@
       <div class="modal-body">
         <form>
             <div class="form-group">
-              <label for="text">ID</label>
+              <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
@@ -135,6 +141,43 @@
           <button type="submit" class="btn btn-primary">OK</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal view delivery-->
+<div id="view" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delivery Details</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="text">ID</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Name</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Contact Number</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Address</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-success">Update</button>
+              <button type="submit" class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
