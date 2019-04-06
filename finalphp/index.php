@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+  include("php/login_check.php");
+?>
+
 <html>
 <head>
 	<title>Optical Sales and Inventory Management</title>
@@ -16,9 +20,9 @@
       <div class="fadeIn first">
         <img src="img/user-logo.png" id="icon" alt="User Icon" />
       </div>
-      <form class="form-signin">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <form class="form-signin" method="post">
+        <input type="text" id="username" class="fadeIn second" name="uname" placeholder="Enter Username" required>
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Enter Password" required>
         <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
     </div>
