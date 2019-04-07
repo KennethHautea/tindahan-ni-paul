@@ -1,3 +1,9 @@
+<?php
+include("connection.php")
+
+
+
+?>
 <html>
 <head>
 	<title>Optical Sales and Inventory Management</title>
@@ -26,6 +32,17 @@
   </center><br>
 </div>
 <div class="table" style="overflow-y:auto;">
+<<<<<<< HEAD
+  	<table>
+    	<tr>
+      		<th>ID</th>
+      		<th>Name</th>
+      		<th>Contact Number</th>
+      		<th>Location</th>
+    	</tr>
+    
+
+=======
   	<table class="table">
       <thead>
         <tr>
@@ -38,6 +55,7 @@
     	<tbody>
         
       </tbody>
+>>>>>>> ba9667ab6981373ca0427d33c6eaaacefc1bcbfa
   	</table>
 <div class="container-fluid">
 	<div class="row">
@@ -66,26 +84,31 @@
         <h4 class="modal-title">Add Supplier</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="POST" action="supplierAction.php">
             <div class="form-group">
+<<<<<<< HEAD
+              <label for="text">ID</label>
+              <input type="text" class="form-control" id="sid" name="supid">
+=======
               <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
+>>>>>>> ba9667ab6981373ca0427d33c6eaaacefc1bcbfa
             </div>
             <div class="form-group">
               <label for="text">Name</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supname">
             </div>
             <div class="form-group">
               <label for="text">Contact Number</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supnum">
             </div>
             <div class="form-group">
               <label for="text">Address</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supaddress">
             </div>
             <div>
-              <button type="submit" class="btn btn-success">Save</button>
-              <button type="submit" class="btn btn-danger">Cancel</button>
+              <input value="save" name="submit" type="submit" class="btn btn-success">
+              
             </div>
         </form>
       </div>
