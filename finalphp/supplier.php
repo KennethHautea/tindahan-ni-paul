@@ -29,8 +29,8 @@
   	<table class="table">
       <thead>
         <tr>
-          <th>Sup ID</th>
-          <th>Name</th>
+          <th>Supplier ID</th>
+          <th>Supplier Name</th>
           <th>Contact No</th>
           <th>Location</th>
         </tr>
@@ -159,8 +159,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Sup ID</th>
-              <th>Deliv ID</th>
+              <th>Supplier ID</th>
+              <th>Delivery ID</th>
               <th>Date</th>
               <th>Order</th>
               <th>Quantity</th>
