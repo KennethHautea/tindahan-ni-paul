@@ -1,9 +1,3 @@
-<?php
-include("connection.php")
-
-
-
-?>
 <html>
 <head>
 	<title>Optical Sales and Inventory Management</title>
@@ -32,17 +26,6 @@ include("connection.php")
   </center><br>
 </div>
 <div class="table" style="overflow-y:auto;">
-<<<<<<< HEAD
-  	<table>
-    	<tr>
-      		<th>ID</th>
-      		<th>Name</th>
-      		<th>Contact Number</th>
-      		<th>Location</th>
-    	</tr>
-    
-
-=======
   	<table class="table">
       <thead>
         <tr>
@@ -55,7 +38,6 @@ include("connection.php")
     	<tbody>
         
       </tbody>
->>>>>>> ba9667ab6981373ca0427d33c6eaaacefc1bcbfa
   	</table>
 <div class="container-fluid">
 	<div class="row">
@@ -74,7 +56,7 @@ include("connection.php")
 </div>
 </div>
 
-<!-- Modal add-->
+<!-- Modal sup add-->
 <div id="suppadd" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- content-->
@@ -84,31 +66,26 @@ include("connection.php")
         <h4 class="modal-title">Add Supplier</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="supplierAction.php">
+        <form>
             <div class="form-group">
-<<<<<<< HEAD
-              <label for="text">ID</label>
-              <input type="text" class="form-control" id="sid" name="supid">
-=======
               <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
->>>>>>> ba9667ab6981373ca0427d33c6eaaacefc1bcbfa
             </div>
             <div class="form-group">
               <label for="text">Name</label>
-              <input type="text" class="form-control" id="text" name="supname">
+              <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
               <label for="text">Contact Number</label>
-              <input type="text" class="form-control" id="text" name="supnum">
+              <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
               <label for="text">Address</label>
-              <input type="text" class="form-control" id="text" name="supaddress">
+              <input type="text" class="form-control" id="text">
             </div>
             <div>
-              <input value="save" name="submit" type="submit" class="btn btn-success">
-              
+              <button type="submit" class="btn btn-success">Save</button>
+              <button type="submit" class="btn btn-danger">Cancel</button>
             </div>
         </form>
       </div>
@@ -116,7 +93,7 @@ include("connection.php")
   </div>
 </div>
 
-<!-- Modal update-->
+<!-- Modal sup update-->
 <div id="suppup" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- content-->
@@ -153,7 +130,7 @@ include("connection.php")
   </div>
 </div>
 
-<!-- Modal delete-->
+<!-- Modal sup delete-->
 <div id="suppdel" class="modal fade" role="dialog">
   <div class="modal-dialog modal-sm">
     <!-- content-->
@@ -179,21 +156,89 @@ include("connection.php")
         <h4 class="modal-title">Delivery Details</h4>
       </div>
       <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Sup ID</th>
+              <th>Deliv ID</th>
+              <th>Date</th>
+              <th>Order</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#delivadd" >Add</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#delivup" >Update</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delivdel" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal deliv add-->
+<div id="delivadd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Delivery</h4>
+      </div>
+      <div class="modal-body">
         <form>
             <div class="form-group">
-              <label for="text">ID</label>
+              <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
-              <label for="text">Name</label>
+              <label for="text">Delivery ID</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
-              <label for="text">Contact Number</label>
+              <label for="Date">Date</label>
+              <input type="Date" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Order</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-success">Save</button>
+              <button type="submit" class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal deliv update-->
+<div id="delivup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Delivery</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="text">Supplier ID</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div class="form-group">
-              <label for="text">Address</label>
+              <label for="text">Delivery ID</label>
+              <input type="text" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="Date">Date</label>
+              <input type="Date" class="form-control" id="text">
+            </div>
+            <div class="form-group">
+              <label for="text">Order</label>
               <input type="text" class="form-control" id="text">
             </div>
             <div>
@@ -201,6 +246,22 @@ include("connection.php")
               <button type="submit" class="btn btn-danger">Cancel</button>
             </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal deliv delete-->
+<div id="delivdel" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <!-- content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure you would like to delete this delivery?</p>
+        <div>
+          <button type="submit" class="btn btn-primary">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+        </div>
       </div>
     </div>
   </div>
