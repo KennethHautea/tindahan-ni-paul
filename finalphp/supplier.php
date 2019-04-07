@@ -1,3 +1,9 @@
+<?php
+include("connection.php")
+
+
+
+?>
 <html>
 <head>
 	<title>Optical Sales and Inventory Management</title>
@@ -33,6 +39,8 @@
       		<th>Contact Number</th>
       		<th>Location</th>
     	</tr>
+    
+
   	</table>
 <div class="container-fluid">
 	<div class="row">
@@ -60,26 +68,26 @@
         <h4 class="modal-title">Add Supplier</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="POST" action="supplierAction.php">
             <div class="form-group">
               <label for="text">ID</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="sid" name="supid">
             </div>
             <div class="form-group">
               <label for="text">Name</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supname">
             </div>
             <div class="form-group">
               <label for="text">Contact Number</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supnum">
             </div>
             <div class="form-group">
               <label for="text">Address</label>
-              <input type="text" class="form-control" id="text">
+              <input type="text" class="form-control" id="text" name="supaddress">
             </div>
             <div>
-              <button type="submit" class="btn btn-success">Save</button>
-              <button type="submit" class="btn btn-danger">Cancel</button>
+              <input value="save" name="submit" type="submit" class="btn btn-success">
+              
             </div>
         </form>
       </div>
