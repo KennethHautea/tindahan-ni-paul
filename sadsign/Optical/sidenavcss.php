@@ -14,7 +14,7 @@
 .sidebar a {
   display: block;
   color: white;
-  padding: 15px;
+  padding: 16px;
   text-decoration: none;
 }
  

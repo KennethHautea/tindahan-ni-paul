@@ -7,13 +7,12 @@ if(empty($_SESSION['user_name'])){
 }
 ?>
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-	<title>Duray - Veron Optical</title>
+    <title>Duray - Veron Optical</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!-- Loader -->
     <link rel="stylesheet" href="css/loader.css">
     <script src="js/jquery-1.12.4.js"></script>
@@ -22,7 +21,7 @@ if(empty($_SESSION['user_name'])){
          $(document).ready(function() {
                 $('#example').DataTable({});
             });
-    </script>
+        </script>
     <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="css/responsive.bootstrap.min.css">
@@ -30,12 +29,13 @@ if(empty($_SESSION['user_name'])){
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
 </head>
+
 <body onload="myFunction()" style="margin:0;">
     <?php include "navigation.php"?>
     <div class="sidebar">
-        <a href="supplier.php">Supplier</a>
+        <a class="active" href="supplier.php">Supplier</a>
         <a href="delivery.php">Delivery</a>
-        <a class="active" href="product.php">Product</a>
+        <a href="product.php">Product</a>
         <a href="damage.php">Damage</a>
         <a href="customer.php">Customer</a>
         <a href="transaction.php">Transaction</a>
@@ -47,59 +47,59 @@ if(empty($_SESSION['user_name'])){
         <div class="col-sm-8">
             <div class="container" >
             </br>
-            <a href="#add" data-toggle="modal">
-                <button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Add Product</button>
-            </a> 
+                <a href="#add" data-toggle="modal"><button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Add Supplier</button>
+                </a>
         <br>
         <br>
         <table id="example" class="display nowrap" cellspacing="0">
             <thead>
-                <tr >
-                    <th>Product Id</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Original Price</th>
-                    <th>Selling Price</th>
-                    <th>Action</th>
+                <tr>
+                    <th>SupplierID</th>
+                    <th>SupplierName</th>
+                    <th>Location</th>
+                    <th>Contact</th>
+                    <th>Option</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                    $sql = "SELECT * FROM products";
+                    $sql = "SELECT * FROM suppliers ";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            $prod_Id = $row['prod_Id'];
-                            $prod_Name = $row['prod_Name'];
-                            $quantity = $row['quantity'];
-                            $Original_Price = $row['Original_Price'];
-                            $selling_Price = $row['selling_Price'];
+                            $sup_Id = $row['sup_Id'];
+                            $sup_Name = $row['sup_Name'];
+                            $location = $row['location'];
+                            $contact_Number = $row['contact_Number'];
                     ?>
                 <tr>
                     <td>
-                        <?php echo $prod_Id; ?>
+                        <?php echo $sup_Id; ?>
                     </td>
                     <td>
-                        <?php echo $prod_Name; ?>
+                        <?php echo $sup_Name; ?>
                     </td>
                     <td>
-                        <?php echo $quantity; ?>
+                        <?php echo $location; ?>
                     </td>
                     <td>
-                        <?php echo $Original_Price; ?>
+                        <?php echo $contact_Number; ?>
                     </td>
+                   
                     <td>
-                        <?php echo $selling_Price; ?>
-                    </td>
-                    <td>
-                        <a href="#edit<?php echo $prod_Id;?>" data-toggle="modal">
+                       
+                       
+                        <a href="#edit<?php echo $sup_Id;?>" data-toggle="modal">
                             <button type='button' class='btn btn-warning btn-sm'>Update</button>
                         </a>
-                        <a href="#delete<?php echo $prod_Id;?>" data-toggle="modal">
+                        <a href="#delete<?php echo $sup_Id;?>" data-toggle="modal">
                             <button type='button' class='btn btn-danger btn-sm'>Delete</button>
                         </a>
                     </td>
+                   
+                   
+                    <!--ChangePassword-->
                     <div id="changepass" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
@@ -133,35 +133,33 @@ if(empty($_SESSION['user_name'])){
                             </div>
                         </div>
                     </div>
+
                     <!--Edit Item Modal -->
-                    <div id="edit<?php echo $prod_Id; ?>" class="modal fade" role="dialog">
+                    <div id="edit<?php echo $sup_Id; ?>" class="modal fade" role="dialog">
                         <form method="post" class="form-horizontal" role="form">
                             <div class="modal-dialog modal-lg">
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Update Item</h4>
+                                        <h4 class="modal-title">Update Supplier Item</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="edit_item_id" value="<?php echo $prod_Id; ?>">
-				                                        <div class="form-group">
-				                            <label class="control-label col-sm-2" for="prod_Name">Product Name:</label>
-				                            <div class="col-sm-4">
-				                                <input type="text" class="form-control" id="prod_Name" name="prod_Name" value="<?php $prod_Name ;?> placeholder="Product Name" autocomplete="off" autofocus required> </div>
-				                            <label class="control-label col-sm-2" for="quantity">Quantity:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="quantity" name="quantity" value="<?php $quantity ;?> placeholder="Quantity" autocomplete="off" required> </div>
-				                        </div>
-				                        <div class="form-group">
-				                            <label class="control-label col-sm-2" for="selling_Price">Selling Price:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="selling_Price" name="selling_Price" value="<?php $selling_Price ;?> placeholder="Selling Price" autocomplete="off" required> </div>
-				                          
-				                          <label class="control-label col-sm-2" for="Original_Price">Original Price:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="Original_Price" name="Original_Price" value="<?php $Original_Price ;?> placeholder="Original Price" autocomplete="off" required> </div>
-				                        </div>
+                                        <input type="hidden" name="edit_item_id" value="<?php echo $sup_Id; ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="sup_Name">Supplier Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="sup_Name" name="sup_Name" value="<?php echo $sup_Name; ?>" placeholder="sup_Name" required autofocus> </div></br>
+                                            <label class="control-label col-sm-2" for="location">location:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="location" name="location" value="<?php echo $location; ?>" placeholder="location" required> </div></br>
+                                        </div>
+                                        <div class="form-group">
+                                            
+                                            <label class="control-label col-sm-2" for="contact_Number">Contact Number:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="contact_Number" name="contact_Number" value="<?php echo $contact_Number; ?>" placeholder="contact_Number" required> </div></br>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary" name="update_item"><span class="glyphicon glyphicon-edit"></span> Edit</button>
@@ -172,7 +170,7 @@ if(empty($_SESSION['user_name'])){
                         </form>
                     </div>
                     <!--Delete Modal -->
-                    <div id="delete<?php echo $prod_Id; ?>" class="modal fade" role="dialog">
+                    <div id="delete<?php echo $sup_Id; ?>" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <form method="post">
                                 <!-- Modal content-->
@@ -182,9 +180,9 @@ if(empty($_SESSION['user_name'])){
                                         <h4 class="modal-title">Delete</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="delete_id" value="<?php echo $prod_Id; ?>">
-                                        <div class="alert alert-danger">Are you Sure you want Delete <strong>
-                                                <?php echo $prod_Name; ?>?</strong> </div>
+                                        <input type="hidden" name="delete_id" value="<?php echo $sup_Id; ?>">
+                                        <div class="alert alert-danger">Are you Sure you want Delete Supplier Named <strong>
+                                                <?php echo $sup_Name; ?>?</strong> </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="delete" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> YES</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> NO</button>
@@ -194,9 +192,11 @@ if(empty($_SESSION['user_name'])){
                             </form>
                         </div>
                     </div>
+
                 </tr>
                 <?php
                         }
+                         
                         if(isset($_POST['change_pass'])){
                             $sql = "SELECT password FROM tbl_user WHERE username='$session_username'";
                             $result = $conn->query($sql);
@@ -223,24 +223,24 @@ if(empty($_SESSION['user_name'])){
                             } else {
                                 $usernameErr = '<div class="alert alert-danger"><strong>Username</strong> Not Found.</div>';
                                 $username = "";
-                            }
+                            } 
                         }
 
 
                         //Update Items
                         if(isset($_POST['update_item'])){
-                         $prod_Name = $_POST['prod_Name'];
-                        $quantity = $_POST['quantity'];
-                        $Original_Price = $_POST['Original_Price'];
-                        $selling_Price = $_POST['selling_Price'];
-                            $sql = "UPDATE products SET 
-                                prod_Name='$prod_Name',
-                                quantity='$quantity',
-                                Original_Price='$Original_Price',
-                                selling_Price='$selling_Price'
-                                WHERE prod_Id='$edit_item_id' ";
+                            $edit_item_id = $_POST['edit_item_id'];
+                            $sup_Name = $_POST['sup_Name'];
+                            $location = $_POST['location'];
+                            $contact_Number = $_POST['contact_Number'];
+                            $sql = "UPDATE suppliers SET 
+                                sup_Name='$sup_Name',
+                                location='$location',
+                                contact_Number='$contact_Number'
+                                
+                                WHERE sup_Id='$edit_item_id' ";
                             if ($conn->query($sql) === TRUE) {
-                                echo '<script>window.location.href="product.php"</script>';
+                                echo '<script>window.location.href="supplier.php"</script>';
                             } else {
                                 echo "Error updating record: " . $conn->error;
                             }
@@ -249,12 +249,12 @@ if(empty($_SESSION['user_name'])){
                         if(isset($_POST['delete'])){
                             // sql to delete a record
                             $delete_id = $_POST['delete_id'];
-                            $sql = "DELETE FROM products WHERE prod_Id='$delete_id' ";
+                            $sql = "DELETE FROM suppliers WHERE sup_Id='$delete_id' ";
                             if ($conn->query($sql) === TRUE) {
-                                $sql = "DELETE FROM products WHERE prod_Id='$delete_id' ";
+                                $sql = "DELETE FROM suppliers WHERE sup_Id='$delete_id' ";
                                 if ($conn->query($sql) === TRUE) {
-                                    $sql = "DELETE FROM products WHERE prod_Id='$delete_id' ";
-                                    echo '<script>window.location.href="product.php"</script>';
+                                    $sql = "DELETE FROM suppliers WHERE sup_Id='$delete_id' ";
+                                    echo '<script>window.location.href="supplier.php"</script>';
                                 } else {
                                     echo "Error deleting record: " . $conn->error;
                                 }
@@ -266,20 +266,15 @@ if(empty($_SESSION['user_name'])){
 
                     //Add Item        
                     if(isset($_POST['add_item'])){
-                        $prod_Name = $_POST['prod_Name'];
-                        $quantity = $_POST['quantity'];
-                        $Original_Price = $_POST['Original_Price'];
-                        $selling_Price = $_POST['selling_Price'];
-                        $sql = "INSERT INTO products (prod_Name,quantity,selling_Price,Original_Price)VALUES ('$prod_Name','$quantity','$selling_Price','$Original_Price')";
+                            $sup_Name = $_POST['sup_Name'];
+                            $location = $_POST['location']; 
+                            $contact_Number = $_POST['contact_Number'];
+                        $sql = "INSERT INTO suppliers (sup_Name,location,contact_Number)VALUES ('$sup_Name','$location','$contact_Number')";
                         if ($conn->query($sql) === TRUE) {
-                            $add_inventory_query = "INSERT INTO products(prod_Name,quantity,selling_Price,Original_Price)VALUES ('$prod_Name','$quantity','$selling_Price','$Original_Price')";
-                            		echo '<script>window.location.href="product.php"</script>';
+                            $add_inventory_query = "INSERT INTO suppliers(sup_Name,location,contact_Number)VALUES ('$sup_Name','$location','$contact_Number')";
+                                echo '<script>window.location.href="supplier.php"</script>';
                         } 
                     }
-
-                   
-
-                    
 ?>
             </tbody>
         </table>
@@ -291,7 +286,7 @@ if(empty($_SESSION['user_name'])){
         </div>
         
    
-     <!--Add Item Modal -->
+    <!--Add Item Modal -->
     <div id="add" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <!-- Modal content-->
@@ -299,27 +294,23 @@ if(empty($_SESSION['user_name'])){
                 <form method="post" class="form-horizontal" role="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add Product</h4>
+                        <h4 class="modal-title">Add Supplier</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="prod_Name">Product Name:</label>
+                            <label class="control-label col-sm-2" for="sup_Name">Supplier Name:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="prod_Name" name="prod_Name" placeholder="Product Name" autocomplete="off" autofocus required> </div>
-                            <label class="control-label col-sm-2" for="quantity">Quantity:</label>
+                                <input type="text" class="form-control" id="sup_Name" name="sup_Name" placeholder="Supplier Name" autocomplete="off" autofocus required> </div>
+                            <label class="control-label col-sm-2" for="location">Location:</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" autocomplete="off" required> </div>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Location" autocomplete="off" required> </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="selling_Price">Selling Price:</label>
+                            <label class="control-label col-sm-2" for="contact_Number">Contact number:</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="selling_Price" name="selling_Price" placeholder="Selling Price" autocomplete="off" required> </div>
-                          
-                          <label class="control-label col-sm-2" for="Original_Price">Original Price:</label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" id="Original_Price" name="Original_Price" placeholder="Original Price" autocomplete="off" required> </div>
+                                <input type="text" class="form-control" id="contact_Number" name="contact_Number" placeholder="Contact number" autocomplete="off" required> </div>
                         </div>
-                        
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="add_item"><span class="glyphicon glyphicon-plus"></span> Add</button>
@@ -355,4 +346,5 @@ if(empty($_SESSION['user_name'])){
         </div>
     </div>
 </body>
+
 </html>

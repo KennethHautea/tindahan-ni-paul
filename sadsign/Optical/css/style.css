@@ -1,13 +1,9 @@
-.greyn{
-    background-color: #27ae60;
-    color: #ecf0f1;
+#tbl{
+	margin-top: 63px;
+    margin-left: -210px;
+    margin-right: 15px;
 }
-
-.greyn2{
-    background-color: #2ecc71;
-    color: #ecf0f1;
-}
-
-body{
-    background-color: #ecf0f1;
+.modal-header{
+	background-color: #53A3FF;
+	text-align: center;
 }

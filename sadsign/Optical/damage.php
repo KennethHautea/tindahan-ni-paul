@@ -35,8 +35,8 @@ if(empty($_SESSION['user_name'])){
     <div class="sidebar">
         <a href="supplier.php">Supplier</a>
         <a href="delivery.php">Delivery</a>
-        <a class="active" href="product.php">Product</a>
-        <a href="damage.php">Damage</a>
+        <a href="product.php">Product</a>
+        <a class="active" href="damage.php">Damage</a>
         <a href="customer.php">Customer</a>
         <a href="transaction.php">Transaction</a>
         <a href="report.php">Reports</a>
@@ -48,18 +48,16 @@ if(empty($_SESSION['user_name'])){
             <div class="container" >
             </br>
             <a href="#add" data-toggle="modal">
-                <button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Add Product</button>
+                <button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Add Damage Product</button>
             </a> 
         <br>
         <br>
         <table id="example" class="display nowrap" cellspacing="0">
             <thead>
                 <tr >
-                    <th>Product Id</th>
-                    <th>Product Name</th>
+                    <th>Delivery Id</th>
                     <th>Quantity</th>
-                    <th>Original Price</th>
-                    <th>Selling Price</th>
+                    <th>Delivered Items</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -71,9 +69,7 @@ if(empty($_SESSION['user_name'])){
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
                             $prod_Id = $row['prod_Id'];
-                            $prod_Name = $row['prod_Name'];
                             $quantity = $row['quantity'];
-                            $Original_Price = $row['Original_Price'];
                             $selling_Price = $row['selling_Price'];
                     ?>
                 <tr>
@@ -81,13 +77,7 @@ if(empty($_SESSION['user_name'])){
                         <?php echo $prod_Id; ?>
                     </td>
                     <td>
-                        <?php echo $prod_Name; ?>
-                    </td>
-                    <td>
                         <?php echo $quantity; ?>
-                    </td>
-                    <td>
-                        <?php echo $Original_Price; ?>
                     </td>
                     <td>
                         <?php echo $selling_Price; ?>
@@ -146,22 +136,17 @@ if(empty($_SESSION['user_name'])){
                                     <div class="modal-body">
                                         <input type="hidden" name="edit_item_id" value="<?php echo $prod_Id; ?>">
 				                                        <div class="form-group">
-				                            <label class="control-label col-sm-2" for="prod_Name">Product Name:</label>
-				                            <div class="col-sm-4">
-				                                <input type="text" class="form-control" id="prod_Name" name="prod_Name" value="<?php $prod_Name ;?> placeholder="Product Name" autocomplete="off" autofocus required> </div>
-				                            <label class="control-label col-sm-2" for="quantity">Quantity:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="quantity" name="quantity" value="<?php $quantity ;?> placeholder="Quantity" autocomplete="off" required> </div>
+				                            <label class="control-label col-sm-2" for="prod_Name">Quantity:</label>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="quantity" name="quantity" value="<?php $quantity ;?> placeholder="Quantity"autocomplete="off" required>
+                                            </div>
+				                            <label class="control-label col-sm-2" for="quantity">Delivered Item:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="prod_Name" name="prod_Name" value="<?php $prod_Name ;?>" placeholder="Product Name" autocomplete="off" autofocus required>
+                                            </div>
 				                        </div>
-				                        <div class="form-group">
-				                            <label class="control-label col-sm-2" for="selling_Price">Selling Price:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="selling_Price" name="selling_Price" value="<?php $selling_Price ;?> placeholder="Selling Price" autocomplete="off" required> </div>
-				                          
-				                          <label class="control-label col-sm-2" for="Original_Price">Original Price:</label>
-				                            <div class="col-sm-4">
-				                                <input type="number" class="form-control" id="Original_Price" name="Original_Price" value="<?php $Original_Price ;?> placeholder="Original Price" autocomplete="off" required> </div>
-				                        </div>
+                                        <br>
+                                        <br>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary" name="update_item"><span class="glyphicon glyphicon-edit"></span> Edit</button>
@@ -184,7 +169,7 @@ if(empty($_SESSION['user_name'])){
                                     <div class="modal-body">
                                         <input type="hidden" name="delete_id" value="<?php echo $prod_Id; ?>">
                                         <div class="alert alert-danger">Are you Sure you want Delete <strong>
-                                                <?php echo $prod_Name; ?>?</strong> </div>
+                                                <?php echo $prod_Id; ?>?</strong> </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="delete" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> YES</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> NO</button>
@@ -240,7 +225,7 @@ if(empty($_SESSION['user_name'])){
                                 selling_Price='$selling_Price'
                                 WHERE prod_Id='$edit_item_id' ";
                             if ($conn->query($sql) === TRUE) {
-                                echo '<script>window.location.href="product.php"</script>';
+                                echo '<script>window.location.href="damage.php"</script>';
                             } else {
                                 echo "Error updating record: " . $conn->error;
                             }
@@ -254,7 +239,7 @@ if(empty($_SESSION['user_name'])){
                                 $sql = "DELETE FROM products WHERE prod_Id='$delete_id' ";
                                 if ($conn->query($sql) === TRUE) {
                                     $sql = "DELETE FROM products WHERE prod_Id='$delete_id' ";
-                                    echo '<script>window.location.href="product.php"</script>';
+                                    echo '<script>window.location.href="damage.php"</script>';
                                 } else {
                                     echo "Error deleting record: " . $conn->error;
                                 }
@@ -273,15 +258,11 @@ if(empty($_SESSION['user_name'])){
                         $sql = "INSERT INTO products (prod_Name,quantity,selling_Price,Original_Price)VALUES ('$prod_Name','$quantity','$selling_Price','$Original_Price')";
                         if ($conn->query($sql) === TRUE) {
                             $add_inventory_query = "INSERT INTO products(prod_Name,quantity,selling_Price,Original_Price)VALUES ('$prod_Name','$quantity','$selling_Price','$Original_Price')";
-                            		echo '<script>window.location.href="product.php"</script>';
+                            		echo '<script>window.location.href="damage.php"</script>';
                         } 
                     }
-
-                   
-
-                    
 ?>
-            </tbody>
+        </tbody>
         </table>
         </div>
         </div>
@@ -299,27 +280,17 @@ if(empty($_SESSION['user_name'])){
                 <form method="post" class="form-horizontal" role="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add Product</h4>
+                        <h4 class="modal-title">Add Damage Items</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="prod_Name">Product Name:</label>
+                            <label class="control-label col-sm-2" for="prod_Name">Quantity:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="prod_Name" name="prod_Name" placeholder="Product Name" autocomplete="off" autofocus required> </div>
-                            <label class="control-label col-sm-2" for="quantity">Quantity:</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" autocomplete="off" autofocus required> </div>
+                            <label class="control-label col-sm-2" for="quantity">Delivered Item:</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" autocomplete="off" required> </div>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Delivered Item" autocomplete="off" required> </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="selling_Price">Selling Price:</label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" id="selling_Price" name="selling_Price" placeholder="Selling Price" autocomplete="off" required> </div>
-                          
-                          <label class="control-label col-sm-2" for="Original_Price">Original Price:</label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" id="Original_Price" name="Original_Price" placeholder="Original Price" autocomplete="off" required> </div>
-                        </div>
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="add_item"><span class="glyphicon glyphicon-plus"></span> Add</button>
